@@ -5,13 +5,9 @@ VisualStudioVersion = 15.0.27729.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroovyMusic.Android", "GroovyMusic\GroovyMusic.Android\GroovyMusic.Android.csproj", "{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "GroovyMusic", "GroovyMusic\GroovyMusic\GroovyMusic.shproj", "{C295E252-AD25-46B9-8FD1-8D2005FC8CB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroovyMusic", "GroovyMusic\GroovyMusic\GroovyMusic.csproj", "{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		GroovyMusic\GroovyMusic\GroovyMusic.projitems*{0dda0cbb-ba5e-44e9-9524-c08d5d88a5c6}*SharedItemsImports = 4
-		GroovyMusic\GroovyMusic\GroovyMusic.projitems*{c295e252-ad25-46b9-8fd1-8d2005fc8cb1}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -23,6 +19,10 @@ Global
 		{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
