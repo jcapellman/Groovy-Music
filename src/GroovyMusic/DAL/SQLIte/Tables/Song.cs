@@ -2,9 +2,9 @@
 
 using SQLite;
 
-namespace GroovyMusic.DAL.Tables
+namespace GroovyMusic.DAL.SQLIte.Tables
 {
-    public class Songs
+    public class Song
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

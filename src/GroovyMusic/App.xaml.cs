@@ -1,4 +1,6 @@
-﻿using GroovyMusic.Interfaces;
+﻿using GroovyMusic.DAL;
+using GroovyMusic.DAL.SQLIte;
+using GroovyMusic.Interfaces;
 using GroovyMusic.Views;
 
 using Xamarin.Forms;
@@ -9,6 +11,8 @@ namespace GroovyMusic
 {
 	public partial class App
 	{
+	    public static IDataLayer Database;
+
 	    private static void InitializeLocalization()
 	    {
 	        var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
@@ -16,11 +20,18 @@ namespace GroovyMusic
 	        DependencyService.Get<ILocalize>().SetLocale(ci);
 	    }
 
+	    private static void InitializeDatabase()
+	    {
+            Database = new SQLiteDataLayer(string.Empty);
+	    }
+
         public App ()
 		{
 			InitializeComponent();
             
             InitializeLocalization();
+
+            InitializeDatabase();
 
             MainPage = new MainPage();
 		}
