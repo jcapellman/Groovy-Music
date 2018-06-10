@@ -1,4 +1,5 @@
-﻿using GroovyMusic.DAL;
+﻿using GroovyMusic.Common;
+using GroovyMusic.DAL;
 using GroovyMusic.DAL.SQLIte;
 using GroovyMusic.Interfaces;
 using GroovyMusic.Views;
@@ -22,7 +23,7 @@ namespace GroovyMusic
 
 	    private static void InitializeDatabase()
 	    {
-            Database = new SQLiteDataLayer(string.Empty);
+            Database = new SQLiteDataLayer(DependencyService.Get<IFileIO>().GetLocalFilePath(Constants.FILENAME_SQLITE_DB));
 	    }
 
         public App ()
