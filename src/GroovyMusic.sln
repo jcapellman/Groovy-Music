@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27729.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroovyMusic.Android", "GroovyMusic\GroovyMusic.Android\GroovyMusic.Android.csproj", "{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroovyMusic.Android", "GroovyMusic.Android\GroovyMusic.Android.csproj", "{0DDA0CBB-BA5E-44E9-9524-C08D5D88A5C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroovyMusic", "GroovyMusic\GroovyMusic\GroovyMusic.csproj", "{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GroovyMusic", "GroovyMusic\GroovyMusic.csproj", "{DD496727-D0C7-4CC8-B3AA-23CDA9ECE526}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
