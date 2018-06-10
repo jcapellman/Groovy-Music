@@ -1,11 +1,11 @@
 ﻿using System;
 
+using GroovyMusic.Models.Base;
+
 namespace GroovyMusic.Models
 {
-    public class Songs
+    public class Songs : BaseModel
     {
-        public string Name { get; set; }
-
         public int? TrackNumber { get; set; }
 
         public TimeSpan Duration { get; set; }

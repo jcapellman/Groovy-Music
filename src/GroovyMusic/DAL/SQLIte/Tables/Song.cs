@@ -1,19 +1,18 @@
 ﻿using System;
 
+using GroovyMusic.DAL.SQLIte.Tables.Base;
+
 using SQLite;
 
 namespace GroovyMusic.DAL.SQLIte.Tables
 {
-    public class Song
+    public class Song : BaseTable
     {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+        [Indexed]
+        public int ArtistID { get; set; }
 
         [Indexed]
-        public string Name { get; set; }
-
-        [Indexed]
-        public string Artist { get; set; }
+        public int AlbumID { get; set; }
 
         public int TrackNumber { get; set; }
 

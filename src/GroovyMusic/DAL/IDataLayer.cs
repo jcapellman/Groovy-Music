@@ -12,5 +12,9 @@ namespace GroovyMusic.DAL
         Task<List<Artists>> GetArtistsAsync(string searchQuery = null);
 
         Task<List<Albums>> GetAlbumsAsync(string searchQuery = null);
+
+        Task<List<Albums>> GetArtistAlbumsAsync(int artistID);
+
+        Task<List<Songs>> GetAlbumTracksAsync(int albumID);
     }
 }
