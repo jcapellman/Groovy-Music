@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using GroovyMusic.Models;
+using GroovyMusic.Objects;
 
 namespace GroovyMusic.DAL
 {
@@ -16,5 +17,7 @@ namespace GroovyMusic.DAL
         Task<List<Albums>> GetArtistAlbumsAsync(int artistID);
 
         Task<List<Songs>> GetAlbumTracksAsync(int albumID);
+
+        Task<bool> AddSongsAsync(List<MusicMetadataItem> songs);
     }
 }

@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" package="com.motionblurstudiosllc.groovymusic" android:installLocation="auto" android:versionName="0.1">
 	<uses-sdk />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<application android:label="Groovy Music"></application>
 </manifest>

@@ -1,4 +1,5 @@
-﻿using GroovyMusic.Common;
+﻿using System.Linq;
+using GroovyMusic.Common;
 using GroovyMusic.DAL;
 using GroovyMusic.DAL.SQLIte;
 using GroovyMusic.Interfaces;
@@ -24,6 +25,20 @@ namespace GroovyMusic
 	    private static void InitializeDatabase()
 	    {
             Database = new SQLiteDataLayer(DependencyService.Get<IFileIO>().GetLocalFilePath(Constants.FILENAME_SQLITE_DB));
+	    }
+
+	    private static async void InitializeMusicList()
+	    {
+	        var songs = await Database.GetSongsAsync();
+
+	        if (songs.Any())
+	        {
+	            return;
+	        }
+
+	        var musicList = DependencyService.Get<IFileIO>().GetMusicFilesList();
+
+
 	    }
 
         public App ()
