@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DEFAULTS_METADATA_UNKNOWN_ALBUM" xml:space="preserve">
+    <value>Unknown Album</value>
+  </data>
+  <data name="DEFAULTS_METADATA_UNKNOWN_ARTIST" xml:space="preserve">
+    <value>Unknown Artist</value>
+  </data>
+  <data name="DEFAULTS_METADATA_UNKNOWN_SONG" xml:space="preserve">
+    <value>Unknown Title</value>
+  </data>
 </root>

@@ -37,10 +37,17 @@ namespace GroovyMusic.Droid.InterfaceImplementations
 
                 var item = new MusicMetadataItem
                 {
-                    Name = mretriever.ExtractMetadata(MetadataKey.Title),
-                    Artist = mretriever.ExtractMetadata(MetadataKey.Albumartist)
+                    Name = mretriever.ExtractMetadata(MetadataKey.Title) ?? GroovyMusic.Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_SONG,
+                    Artist = mretriever.ExtractMetadata(MetadataKey.Albumartist) ?? Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ARTIST,
+                    Album = mretriever.ExtractMetadata(MetadataKey.Album) ?? Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ALBUM,
+                    Duration = TimeSpan.Zero
                 };
-
+                
+                if (!string.IsNullOrEmpty(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber)))
+                {
+                    item.TrackNumber = Convert.ToInt32(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber));
+                }
+                
                 musicList.Add(item);
             }
 
