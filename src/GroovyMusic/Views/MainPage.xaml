@@ -3,9 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GroovyMusic"
              Style="{StaticResource PageStyle}"
+             xmlns:tl="clr-namespace:GroovyMusic.Extensions;assembly=GroovyMusic"
              x:Class="GroovyMusic.Views.MainPage">
     <Grid>
-        <ListView ItemsSource="{Binding Artists}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <SearchBar Grid.Row="0" Placeholder="{tl:Translate MAINPAGE_SEARCHBAR_PLACEHOLDER}" />
+
+        <Picker Grid.Row="1"  />
+
+        <ListView Grid.Row="2" ItemsSource="{Binding Artists}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

@@ -86,5 +86,14 @@ namespace GroovyMusic.Resx {
                 return ResourceManager.GetString("DEFAULTS_METADATA_UNKNOWN_SONG", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to search here....
+        /// </summary>
+        public static string MAINPAGE_SEARCHBAR_PLACEHOLDER {
+            get {
+                return ResourceManager.GetString("MAINPAGE_SEARCHBAR_PLACEHOLDER", resourceCulture);
+            }
+        }
     }
 }

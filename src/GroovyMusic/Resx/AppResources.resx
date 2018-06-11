@@ -126,4 +126,7 @@
   <data name="DEFAULTS_METADATA_UNKNOWN_SONG" xml:space="preserve">
     <value>Unknown Title</value>
   </data>
+  <data name="MAINPAGE_SEARCHBAR_PLACEHOLDER" xml:space="preserve">
+    <value>search here...</value>
+  </data>
 </root>
