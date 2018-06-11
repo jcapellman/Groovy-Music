@@ -14,7 +14,7 @@
 
         <SearchBar Grid.Row="0" Placeholder="{tl:Translate MAINPAGE_SEARCHBAR_PLACEHOLDER}" />
 
-        <Picker Grid.Row="1"  />
+        <Picker Grid.Row="1" ItemsSource="{Binding Filters}" />
 
         <ListView Grid.Row="2" ItemsSource="{Binding Artists}">
             <ListView.ItemTemplate>

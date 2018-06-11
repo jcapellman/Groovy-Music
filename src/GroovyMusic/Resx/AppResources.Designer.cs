@@ -88,6 +88,15 @@ namespace GroovyMusic.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Artist.
+        /// </summary>
+        public static string FILTER_ARTIST_NAME {
+            get {
+                return ResourceManager.GetString("FILTER_ARTIST_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to search here....
         /// </summary>
         public static string MAINPAGE_SEARCHBAR_PLACEHOLDER {
