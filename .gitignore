@@ -6,3 +6,4 @@ AppPackages/
 BundleArtifacts/
 *.csproj.user
 *.pfx
+packages/
