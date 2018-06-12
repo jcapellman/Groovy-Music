@@ -4,20 +4,11 @@ using System.Linq;
 using System.Reflection;
 
 using GroovyMusic.Filters.Base;
-using GroovyMusic.Models;
 
 namespace GroovyMusic.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        private ObservableCollection<Artists> _artists;
-
-        public ObservableCollection<Artists> Artists
-        {
-            get => _artists;
-            set { _artists = value; OnPropertyChanged(); }
-        }
-
         private ObservableCollection<BaseFilter> _filters;
 
         public ObservableCollection<BaseFilter> Filters
@@ -31,14 +22,26 @@ namespace GroovyMusic.ViewModels
             }
         }
 
-        public async void LoadData()
+
+        private BaseFilter _selectedFilter;
+
+        public BaseFilter SelectedFilter
+        {
+            get => _selectedFilter;
+
+            set
+            {
+                _selectedFilter = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void LoadData()
         {
             var filters = Assembly.GetAssembly(typeof(BaseFilter)).GetTypes().Where(a => a.BaseType == typeof(BaseFilter))
                 .Select(a => (BaseFilter) Activator.CreateInstance(a)).OrderBy(a => a.Name).ToList();
 
             Filters = new ObservableCollection<BaseFilter>(filters);
-
-            Artists = new ObservableCollection<Artists>(await App.Database.GetArtistsAsync());
         }
     }
 }

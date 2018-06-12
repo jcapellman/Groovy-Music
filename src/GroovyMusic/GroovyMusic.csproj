@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\ArtistView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resx\AppResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>

@@ -1,4 +1,6 @@
-﻿using GroovyMusic.ViewModels;
+﻿using System;
+
+using GroovyMusic.ViewModels;
 
 using Xamarin.Forms;
 
@@ -21,5 +23,10 @@ namespace GroovyMusic.Views
 
             viewModel.LoadData();
 	    }
-	}
+
+	    public void OnFilterChanged(object sender, EventArgs e)
+	    {
+	        cvMain.Content = viewModel.SelectedFilter.View;
+	    }
+    }
 }

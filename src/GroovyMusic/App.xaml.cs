@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+
 using GroovyMusic.Common;
 using GroovyMusic.DAL;
 using GroovyMusic.DAL.SQLIte;
@@ -37,9 +38,7 @@ namespace GroovyMusic
 	        }
 
 	        var musicList = DependencyService.Get<IFileIO>().GetMusicFilesList();
-
-
-	    }
+        }
 
         public App ()
 		{
@@ -49,12 +48,9 @@ namespace GroovyMusic
 
             InitializeDatabase();
 
-            MainPage = new MainPage();
-		}
+            InitializeMusicList();
 
-		protected override void OnStart ()
-		{
-			// Handle when your app starts
+            MainPage = new MainPage();
 		}
 	}
 }

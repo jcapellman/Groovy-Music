@@ -14,18 +14,8 @@
 
         <SearchBar Grid.Row="0" Placeholder="{tl:Translate MAINPAGE_SEARCHBAR_PLACEHOLDER}" />
 
-        <Picker Grid.Row="1" ItemsSource="{Binding Filters}" />
+        <Picker Grid.Row="1" ItemsSource="{Binding Filters}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnFilterChanged" SelectedItem="{Binding SelectedFilter}" />
 
-        <ListView Grid.Row="2" ItemsSource="{Binding Artists}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid>
-                            <Label Text="{Binding Name}" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <ContentView Grid.Row="2" x:Name="cvMain" />
     </Grid>
 </ContentPage>
