@@ -25,33 +25,45 @@ namespace GroovyMusic.Droid.InterfaceImplementations
 
         public List<MusicMetadataItem> GetMusicFilesList()
         {
-            var files = Directory.GetFiles(Android.OS.Environment.DirectoryMusic).ToList();
-
-            var mretriever = new MediaMetadataRetriever();
-
-            var musicList = new List<MusicMetadataItem>();
-
-            foreach (var file in files)
+            try
             {
-                mretriever.SetDataSource(file);
+                var files = Directory.GetFiles(Android.OS.Environment.DirectoryMusic).ToList();
 
-                var item = new MusicMetadataItem
+                var mretriever = new MediaMetadataRetriever();
+
+                var musicList = new List<MusicMetadataItem>();
+
+                foreach (var file in files)
                 {
-                    Name = mretriever.ExtractMetadata(MetadataKey.Title) ?? GroovyMusic.Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_SONG,
-                    Artist = mretriever.ExtractMetadata(MetadataKey.Albumartist) ?? Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ARTIST,
-                    Album = mretriever.ExtractMetadata(MetadataKey.Album) ?? Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ALBUM,
-                    Duration = TimeSpan.Zero
-                };
-                
-                if (!string.IsNullOrEmpty(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber)))
-                {
-                    item.TrackNumber = Convert.ToInt32(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber));
+                    mretriever.SetDataSource(file);
+
+                    var item = new MusicMetadataItem
+                    {
+                        Name = mretriever.ExtractMetadata(MetadataKey.Title) ??
+                               GroovyMusic.Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_SONG,
+                        Artist = mretriever.ExtractMetadata(MetadataKey.Albumartist) ??
+                                 Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ARTIST,
+                        Album = mretriever.ExtractMetadata(MetadataKey.Album) ??
+                                Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ALBUM,
+                        Duration = TimeSpan.Zero
+                    };
+
+                    if (!string.IsNullOrEmpty(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber)))
+                    {
+                        item.TrackNumber = Convert.ToInt32(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber));
+                    }
+
+                    musicList.Add(item);
                 }
-                
-                musicList.Add(item);
-            }
 
-            return musicList;
+                return musicList;
+            }
+            catch (Exception ex)
+            {
+                //TODO Error logging and Handling
+
+                return new List<MusicMetadataItem>();
+            }
         }
     }
 }

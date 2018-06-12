@@ -4,7 +4,7 @@ using Android.OS;
 
 namespace GroovyMusic.Droid
 {
-    [Activity(Label = "Groovy Music", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, 
+    [Activity(Label = "Groovy Music", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
