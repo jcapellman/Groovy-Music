@@ -32,4 +32,12 @@
     <Style TargetType="Grid" x:Key="FormGroup">
         <Setter Property="Margin" Value="0,0,0,10" />
     </Style>
+
+    <Style TargetType="Picker" x:Key="FilterPicker">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
+
+    <Style TargetType="SearchBar" x:Key="SearchField">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    </Style>
 </ResourceDictionary>

@@ -12,9 +12,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <SearchBar Grid.Row="0" Placeholder="{tl:Translate MAINPAGE_SEARCHBAR_PLACEHOLDER}" />
+        <SearchBar Grid.Row="0" Style="{StaticResource SearchField}" Placeholder="{tl:Translate MAINPAGE_SEARCHBAR_PLACEHOLDER}" />
 
-        <Picker Grid.Row="1" ItemsSource="{Binding Filters}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnFilterChanged" SelectedItem="{Binding SelectedFilter}" />
+        <Picker Grid.Row="1" Style="{StaticResource FilterPicker}"  ItemsSource="{Binding Filters}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="OnFilterChanged" SelectedItem="{Binding SelectedFilter}" />
 
         <ContentView Grid.Row="2" x:Name="cvMain" />
     </Grid>
