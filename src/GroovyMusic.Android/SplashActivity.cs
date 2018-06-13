@@ -13,16 +13,16 @@ namespace GroovyMusic.Droid
         {
             base.OnResume();
 
-            var startupWork = new Task(SimulateStartup);
+            var startupWork = new Task(StartupAppAsync);
 
             startupWork.Start();
         }
         
         public override void OnBackPressed() { }
         
-        async void SimulateStartup()
+        async void StartupAppAsync()
         {
-            await Task.Delay(2000);
+            await Task.Delay(1000);
 
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }

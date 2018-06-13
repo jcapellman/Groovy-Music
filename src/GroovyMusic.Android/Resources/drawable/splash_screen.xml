@@ -6,7 +6,10 @@
   <item>
     <bitmap
       android:src="@drawable/splash_logo"
-      android:tileMode="disabled"
+      android:layout_margin="5dp"
+      android:tileMode="disabled" 
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       android:gravity="center"/>
   </item>
 </layer-list>

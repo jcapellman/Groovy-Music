@@ -39,7 +39,7 @@ namespace GroovyMusic
 
 	        var musicList = DependencyService.Get<IFileIO>().GetMusicFilesList();
         }
-
+        
         public App ()
 		{
 			InitializeComponent();
