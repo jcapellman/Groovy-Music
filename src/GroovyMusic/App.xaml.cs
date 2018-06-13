@@ -25,7 +25,14 @@ namespace GroovyMusic
 
 	    private static void InitializeDatabase()
 	    {
-            Database = new SQLiteDataLayer(DependencyService.Get<IFileIO>().GetLocalFilePath(Constants.FILENAME_SQLITE_DB));
+            var dbFileName = DependencyService.Get<IFileIO>().GetLocalFilePath(Constants.FILENAME_SQLITE_DB);
+
+            if (dbFileName.IsNullOrError)
+            {
+                return;
+            }
+
+            Database = new SQLiteDataLayer(dbFileName.Value);
 	    }
 
 	    private static async void InitializeMusicList()

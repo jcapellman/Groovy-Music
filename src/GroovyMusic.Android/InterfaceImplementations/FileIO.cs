@@ -5,6 +5,7 @@ using System.Linq;
 
 using Android.Media;
 
+using GroovyMusic.Common;
 using GroovyMusic.Droid.InterfaceImplementations;
 using GroovyMusic.Interfaces;
 using GroovyMusic.Objects;
@@ -16,14 +17,14 @@ namespace GroovyMusic.Droid.InterfaceImplementations
 {
     public class FileIO : IFileIO
     {
-        public string GetLocalFilePath(string filename)
+        public ReturnObj<string> GetLocalFilePath(string filename)
         {
             var path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-            return Path.Combine(path, filename);
+            return new ReturnObj<string>(Path.Combine(path, filename));
         }
 
-        public List<MusicMetadataItem> GetMusicFilesList()
+        public ReturnObj<List<MusicMetadataItem>> GetMusicFilesList()
         {
             try
             {
@@ -56,13 +57,11 @@ namespace GroovyMusic.Droid.InterfaceImplementations
                     musicList.Add(item);
                 }
 
-                return musicList;
+                return new ReturnObj<List<MusicMetadataItem>>(musicList);
             }
             catch (Exception ex)
             {
-                //TODO Error logging and Handling
-
-                return new List<MusicMetadataItem>();
+                return new ReturnObj<List<MusicMetadataItem>>(ex);
             }
         }
     }

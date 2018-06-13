@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 
+using GroovyMusic.Common;
 using GroovyMusic.Objects;
 
 namespace GroovyMusic.Interfaces
 {
     public interface IFileIO
     {
-        string GetLocalFilePath(string fileName);
+        ReturnObj<string> GetLocalFilePath(string fileName);
 
-        List<MusicMetadataItem> GetMusicFilesList();
+        ReturnObj<List<MusicMetadataItem>> GetMusicFilesList();
     }
 }
