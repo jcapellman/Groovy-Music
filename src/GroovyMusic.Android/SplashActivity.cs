@@ -14,7 +14,7 @@ namespace GroovyMusic.Droid
             base.OnResume();
 
             var startupWork = new Task(StartupAppAsync);
-
+            
             startupWork.Start();
         }
         

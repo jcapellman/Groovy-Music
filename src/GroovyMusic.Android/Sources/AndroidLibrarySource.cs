@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
-using Android.Media;
+using Android.Provider;
 
 using GroovyMusic.Common;
+using GroovyMusic.Droid.Common;
 using GroovyMusic.Objects;
 using GroovyMusic.Sources;
 
@@ -13,38 +12,51 @@ namespace GroovyMusic.Droid.Sources
 {
     public class AndroidLibrarySource : LibraryMusicSource
     {
+        private NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
+
         public override ReturnObj<List<MusicMetadataItem>> GetMusic()
         {
             try
             {
-                var files = Directory.GetFiles(Android.OS.Environment.DirectoryMusic).ToList();
+                var context = Android.App.Application.Context;
 
-                var mretriever = new MediaMetadataRetriever();
+                var musicUri = MediaStore.Audio.Media.ExternalContentUri;
+
+                var musicCursor = context.ContentResolver.Query(musicUri, 
+                    new[] {
+                        MediaStore.Audio.AudioColumns.Artist,
+                        MediaStore.Audio.AudioColumns.Title,
+                        MediaStore.Audio.AudioColumns.Album,
+                        MediaStore.Audio.AudioColumns.Duration,                        
+                    }, null, null, null);
 
                 var musicList = new List<MusicMetadataItem>();
 
-                foreach (var file in files)
+                if (musicCursor.MoveToFirst())
                 {
-                    mretriever.SetDataSource(file);
-
-                    var item = new MusicMetadataItem
+                    do
                     {
-                        Name = mretriever.ExtractMetadata(MetadataKey.Title) ??
-                               GroovyMusic.Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_SONG,
-                        Artist = mretriever.ExtractMetadata(MetadataKey.Albumartist) ??
-                                 Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ARTIST,
-                        Album = mretriever.ExtractMetadata(MetadataKey.Album) ??
-                                Resx.AppResources.DEFAULTS_METADATA_UNKNOWN_ALBUM,
-                        Duration = TimeSpan.Zero
-                    };
+                        try
+                        {
+                            var track = new MusicMetadataItem
+                            {
+                                Artist = musicCursor.GetStrProperty(MediaStore.Audio.AudioColumns.Artist),
+                                Name = musicCursor.GetStrProperty(MediaStore.Audio.AudioColumns.Title),
+                                Album = musicCursor.GetStrProperty(MediaStore.Audio.AudioColumns.Album),
+                                Duration = TimeSpan.FromMilliseconds(
+                                    musicCursor.GetLongProperty(MediaStore.Audio.AudioColumns.Duration))
+                            };
 
-                    if (!string.IsNullOrEmpty(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber)))
-                    {
-                        item.TrackNumber = Convert.ToInt32(mretriever.ExtractMetadata(MetadataKey.CdTrackNumber));
-                    }
-
-                    musicList.Add(item);
+                            musicList.Add(track);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error(ex);
+                        }
+                    } while (musicCursor.MoveToNext());
                 }
+                
+                musicCursor.Close();
 
                 return new ReturnObj<List<MusicMetadataItem>>(musicList);
             }

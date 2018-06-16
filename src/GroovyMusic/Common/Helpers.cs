@@ -5,13 +5,13 @@ using System.Reflection;
 
 namespace GroovyMusic.Common
 {
-    public class Helpers
+    public static class Helpers
     {
-        public static ReturnObj<List<T>> GetObjects<T>()
+        public static ReturnObj<List<T>> GetObjectsFromAssembly<T>(this Type type)
         {
             try
             {
-                var objects = Assembly.GetCallingAssembly().GetTypes().Where(a => a.BaseType == typeof(T))
+                var objects = Assembly.GetAssembly(type).GetTypes().Where(a => a.BaseType == typeof(T))
                     .Select(a => (T) Activator.CreateInstance(typeof(T))).ToList();
 
                 return new ReturnObj<List<T>>(objects);
