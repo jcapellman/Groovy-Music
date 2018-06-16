@@ -8,7 +8,6 @@ using Xamarin.UITest.Queries;
 namespace GroovyMusic.UnitTests
 {
 	[TestFixture(Platform.Android)]
-	[TestFixture(Platform.iOS)]
 	public class Tests
 	{
 		IApp app;
@@ -28,9 +27,8 @@ namespace GroovyMusic.UnitTests
 		[Test]
 		public void WelcomeTextIsDisplayed()
 		{
-			AppResult[] results = app.WaitForElement(c => c.Marked("Welcome to Xamarin.Forms!"));
-			app.Screenshot("Welcome screen.");
-
+			AppResult[] results = app.WaitForElement(c => c.Marked("cvMain"));
+			
 			Assert.IsTrue(results.Any());
 		}
 	}

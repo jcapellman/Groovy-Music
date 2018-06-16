@@ -44,8 +44,25 @@ namespace GroovyMusic
 	            return;
 	        }
 
-	        var musicList = DependencyService.Get<IFileIO>().GetMusicFilesList();
-        }
+	        var sources = DependencyService.Get<ISources>().GetSources();
+
+	        foreach (var source in sources.Value)
+	        {
+	            var music = source.GetMusic();
+
+	            if (music.IsNullOrError)
+	            {
+	                continue;
+	            }
+
+	            var result = await Database.AddSongsAsync(music.Value);
+
+	            if (!result)
+	            {
+	                continue;
+	            }
+	        }
+	    }
         
         public App ()
 		{

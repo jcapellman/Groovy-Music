@@ -70,10 +70,12 @@
   <ItemGroup>
     <Compile Include="InterfaceImplementations\FileIO.cs" />
     <Compile Include="InterfaceImplementations\Localize.cs" />
+    <Compile Include="InterfaceImplementations\Sources.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\AndroidLibrarySource.cs" />
     <Compile Include="SplashActivity.cs" />
   </ItemGroup>
   <ItemGroup>
