@@ -2,14 +2,19 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GroovyMusic.Controls.ArtistView">
-  <ContentView.Content>
+
+    <ContentView.Resources>
+        <ResourceDictionary Source="../Styles/ArtistView.xaml"/>
+    </ContentView.Resources>
+
+    <ContentView.Content>
         <Grid>
-            <ListView ItemsSource="{Binding Artists}">
+            <ListView Style="{StaticResource ArtistView}" ItemsSource="{Binding Artists}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Label Text="{Binding Name}" />
+                                <Label Style="{StaticResource ArtistName}"  Text="{Binding Name}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
