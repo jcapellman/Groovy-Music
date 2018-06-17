@@ -1,11 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:GroovyMusic.Controls.ViewModels;assembly=GroovyMusic"
              x:Class="GroovyMusic.Controls.ArtistView">
 
     <ContentView.Resources>
         <ResourceDictionary Source="../Styles/ArtistView.xaml"/>
     </ContentView.Resources>
+
+    <ContentView.BindingContext>
+        <viewModels:ArtistViewModel />
+    </ContentView.BindingContext>
 
     <ContentView.Content>
         <Grid>
@@ -14,7 +19,23 @@
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
-                                <Label Style="{StaticResource ArtistName}"  Text="{Binding Name}" />
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Style="{StaticResource ArtistName}"  Text="{Binding Name}" />
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Style="{StaticResource ArtistMetrics}" Text="{Binding NumberAlbums}" />
+
+                                    <Label Grid.Column="1" Style="{StaticResource ArtistMetrics}" Text="{Binding NumberSongs}" />
+                                </Grid>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

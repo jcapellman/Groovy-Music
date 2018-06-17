@@ -13,6 +13,12 @@
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
 
+    <Style TargetType="Label" x:Key="ArtistMetrics">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
     <Style TargetType="ListView" x:Key="ArtistView">
         <Setter Property="Margin" Value="10,10,10,10" />
     </Style>

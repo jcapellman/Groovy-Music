@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <?xaml-comp compile="true" ?>
-<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
-                    xmlns:converters="clr-namespace:ConferenceVision.Converters"
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Color x:Key="PageBackgroundColor">#1e1e1e</Color>
     <Color x:Key="TextColor">White</Color>
