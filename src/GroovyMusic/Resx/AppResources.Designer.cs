@@ -61,6 +61,24 @@ namespace GroovyMusic.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to # ALBUMS.
+        /// </summary>
+        public static string ARTISTVIEW_ALBUM_COUNT {
+            get {
+                return ResourceManager.GetString("ARTISTVIEW_ALBUM_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to # SONGS.
+        /// </summary>
+        public static string ARTISTVIEW_SONG_COUNT {
+            get {
+                return ResourceManager.GetString("ARTISTVIEW_SONG_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unknown Album.
         /// </summary>
         public static string DEFAULTS_METADATA_UNKNOWN_ALBUM {

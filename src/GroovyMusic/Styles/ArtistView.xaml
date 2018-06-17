@@ -13,9 +13,16 @@
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
 
-    <Style TargetType="Label" x:Key="ArtistMetrics">
+    <Style TargetType="Label" x:Key="ArtistMetricsValue">
         <Setter Property="TextColor" Value="{StaticResource TextColor}" />
         <Setter Property="FontSize" Value="10" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ArtistMetricsHeader">
+        <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="HorizontalOptions" Value="Start" />
     </Style>
 
