@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using GroovyMusic.Common;
 using GroovyMusic.Objects;
@@ -9,6 +10,6 @@ namespace GroovyMusic.Sources.Base
     {
         public abstract string SourceName { get; }
 
-        public abstract ReturnObj<List<MusicMetadataItem>> GetMusic();
+        public abstract Task<ReturnObj<List<MusicMetadataItem>>> GetMusicAsync();
     }
 }

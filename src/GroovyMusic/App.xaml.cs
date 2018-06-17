@@ -39,7 +39,7 @@ namespace GroovyMusic
 
 	        foreach (var source in sources.Value)
 	        {
-	            var music = source.GetMusic();
+	            var music = await source.GetMusicAsync();
 
 	            if (music.IsNullOrError)
 	            {

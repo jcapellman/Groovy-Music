@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Android.Provider;
 
@@ -14,7 +15,7 @@ namespace GroovyMusic.Droid.Sources
     {
         private NLog.Logger Log = NLog.LogManager.GetCurrentClassLogger();
 
-        public override ReturnObj<List<MusicMetadataItem>> GetMusic()
+        public override async Task<ReturnObj<List<MusicMetadataItem>>> GetMusicAsync()
         {
             try
             {
