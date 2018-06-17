@@ -138,7 +138,7 @@ namespace GroovyMusic.DAL.SQLIte
                 }
                 else
                 {
-                    songItem.ArtistID = artists[song.Name];
+                    songItem.ArtistID = artists[song.Artist];
                 }
 
                 if (!albums.ContainsKey(song.Album))
