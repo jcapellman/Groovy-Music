@@ -2,8 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-
+using GroovyMusic.DI;
 using GroovyMusic.Filters.Base;
+using GroovyMusic.Interfaces;
+
+using Xamarin.Forms;
 
 namespace GroovyMusic.ViewModels
 {
@@ -21,7 +24,6 @@ namespace GroovyMusic.ViewModels
                 OnPropertyChanged();
             }
         }
-
 
         private BaseFilter _selectedFilter;
 
@@ -42,6 +44,37 @@ namespace GroovyMusic.ViewModels
                 .Select(a => (BaseFilter) Activator.CreateInstance(a)).OrderBy(a => a.Name).ToList();
 
             Filters = new ObservableCollection<BaseFilter>(filters);
+
+            InitializeMusicList();
+        }
+
+        private async void InitializeMusicList()
+        {
+            var songs = await NinjectKernel.DataLayer.GetSongsAsync();
+
+            if (songs.Any())
+            {
+                return;
+            }
+
+            var sources = DependencyService.Get<ISources>().GetSources();
+
+            foreach (var source in sources.Value)
+            {
+                var music = await source.GetMusicAsync();
+
+                if (music.IsNullOrError)
+                {
+                    continue;
+                }
+
+                var result = await NinjectKernel.DataLayer.AddSongsAsync(music.Value);
+
+                if (!result)
+                {
+                    continue;
+                }
+            }        
         }
     }
 }

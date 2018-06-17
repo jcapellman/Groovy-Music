@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
 
-using GroovyMusic.DAL;
+using GroovyMusic.DI;
 using GroovyMusic.Models;
 using GroovyMusic.ViewModels;
-
-using Ninject;
 
 namespace GroovyMusic.Controls.ViewModels
 {
@@ -17,10 +15,12 @@ namespace GroovyMusic.Controls.ViewModels
             get => _artists;
             set { _artists = value; OnPropertyChanged(); }
         }
+        
+        public ArtistViewModel() { }
 
         public async void LoadDataAsync()
         {
-            var artists = await App.Kernel.Get<IDataLayer>().GetArtistsAsync();
+            var artists = await NinjectKernel.DataLayer.GetArtistsAsync();
 
             Artists = new ObservableCollection<Artists>(artists);
         }

@@ -6,6 +6,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
+using GroovyMusic.DI;
+
 namespace GroovyMusic.UWP
 {
     sealed partial class App : Application
@@ -26,6 +28,8 @@ namespace GroovyMusic.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+
+                NinjectKernel.Setup();
 
                 Window.Current.Content = rootFrame;
             }

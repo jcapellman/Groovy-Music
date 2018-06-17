@@ -2,6 +2,8 @@
 using Android.Content.PM;
 using Android.OS;
 
+using GroovyMusic.DI;
+
 namespace GroovyMusic.Droid
 {
     [Activity(Label = "Groovy Music", Icon = "@mipmap/icon", Theme = "@style/MainTheme", 
@@ -15,7 +17,10 @@ namespace GroovyMusic.Droid
 
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+            Xamarin.Forms.Forms.Init(this, bundle);
+
+            NinjectKernel.Setup();
+
             LoadApplication(new App());
         }
     }
