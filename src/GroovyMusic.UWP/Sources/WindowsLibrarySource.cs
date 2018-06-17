@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using Windows.Storage;
+using Windows.Storage.Search;
 
 using GroovyMusic.Common;
 using GroovyMusic.Objects;
@@ -18,8 +19,12 @@ namespace GroovyMusic.UWP.Sources
         {
             try
             {
-                var storageFolder = KnownFolders.MusicLibrary;
-                var files = await storageFolder.GetFilesAsync();
+                var queryOption = new QueryOptions (CommonFileQuery.OrderByTitle, new[] {".mp3", ".mp4", ".wma", ".flac"})
+                {
+                    FolderDepth = FolderDepth.Deep
+                };
+
+                var files = await KnownFolders.MusicLibrary.CreateFileQueryWithOptions(queryOption).GetFilesAsync();
 
                 var musicList = new List<MusicMetadataItem>();
 
@@ -34,7 +39,9 @@ namespace GroovyMusic.UWP.Sources
                             Artist = musicProperties.AlbumArtist,
                             Name = musicProperties.Title,
                             Album = musicProperties.Album,
-                            Duration = musicProperties.Duration
+                            Duration = musicProperties.Duration,
+                            AlbumReleaseYear = (int?)musicProperties.Year,
+                            TrackNumber = (int) musicProperties.TrackNumber
                         };
 
                         musicList.Add(track);
